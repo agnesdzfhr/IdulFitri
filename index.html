@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Happy birthday project</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <h2>Click this card</h2>
+  <div class="body">
+    <div class="birthdayCard">
+      <div class="cardFront">
+        <img class="cover" src="./images/cover.png" alt="Selamat Idul Fitri">
+        <img class="bg-isi" src="./images/bg-isi.png" alt="Selamat Idul Fitri">
+      </div>
+      <div class="cardInside">
+        <img class="notes" src="./images/bg-isi.png" alt="Selamat Idul Fitri">
+        <h3 class="back">عيد مبارك</h3>
+        <p style="font-size: small; text-align: justify;"> Pada perkataan mungkin ada salah. Pada tindakan mungkin ada
+          luka. Di hari yang
+          suci ini, mari kita buka hati untuk saling memaafkan. Minal aidin wal faizin. Mohon maaf lahir dan batin.
+          Taqabbalallahu Minna Wa Minkum.
+          Selamat Idul Fitri 1445H!</p>
+        <p class="name">Zulkifli, Astuti, dan Keluarga</p>
+      </div>
+    </div>
+  </div>
+  <center style="margin-top: 20px;">
+
+    <audio controls autoplay="true" id="birthdaySong" hidden>
+      <source src="./music/takbiran.mp3" type="audio/mp3">
+
+      Your browser does not support the audio element.
+    </audio>
+
+  </center>
+  <script>
+    const birthdayCard = document.querySelector('.birthdayCard');
+    const birthdaySong = document.getElementById('birthdaySong');
+    let isCardOpen = false;
+
+    birthdayCard.addEventListener('click', () => {
+      if (!isCardOpen) {
+        // Buka card dan mainkan lagu
+        birthdayCard.classList.add('open');
+        birthdaySong.play();
+        isCardOpen = true;
+      } else {
+        // Tutup card dan hentikan lagu
+        birthdayCard.classList.remove('open');
+        birthdaySong.pause();
+        isCardOpen = false;
+      }
+    });
+    birthdaySong.addEventListener('ended', () => {
+      // Ketika lagu selesai, tambahkan kelas 'closed' ke card dan tampilkan tombol buka
+      birthdayCard.classList.remove('open');
+    });
+
+  </script>
+</body>
+
+</html>
